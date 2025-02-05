@@ -7,7 +7,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtMultimedia import *
 
-download_link = "https://github.com/voixiy/manifests-steam/raw/refs/heads/main/"
+download_link = "https://pub-fa066d40d2f24bbba9d175fd568672a5.r2.dev/"
 
 class DownloadThread(QtCore.QThread):
     log_signal = QtCore.pyqtSignal(str)
@@ -19,8 +19,10 @@ class DownloadThread(QtCore.QThread):
     def run(self):
         try:
             url = f"{download_link}{self.ID}.zip"
+            print(url)
             response = requests.get(url, stream=True)
             if response.status_code == 200:
+                self.log_signal.emit(f"{self.ID}.zip found.")
                 file_path = os.path.join(os.getcwd(), f"Manifest\{self.ID}.zip")
                 with open(file_path, "wb") as f:
                     for chunk in response.iter_content(chunk_size=1024):
@@ -47,6 +49,7 @@ class Ui(QMainWindow):
         font_family = QtGui.QFontDatabase.applicationFontFamilies(font_id)[0]
         font = QtGui.QFont(font_family, 18)
         self.label.setFont(font)
+        self.label_2.setFont(font)
         
         self.Generate.clicked.connect(self.start_download_thread)
         self.show()
@@ -62,7 +65,7 @@ class Ui(QMainWindow):
         if id_field:
             ID = id_field.toPlainText().strip()
             if ID:
-                self.log(f"Finding {ID}.zip in our github repository...")
+                self.log(f"Finding {ID}.zip in server...")
                 self.download_thread = DownloadThread(ID)
                 self.download_thread.log_signal.connect(self.log)
                 self.download_thread.start()
