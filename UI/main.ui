@@ -19,9 +19,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>1</x>
+     <x>278</x>
      <y>39</y>
-     <width>641</width>
+     <width>346</width>
      <height>68</height>
     </rect>
    </property>
@@ -30,10 +30,10 @@
 </string>
    </property>
    <property name="text">
-    <string>Manifest &amp; Lua Generator</string>
+    <string>&amp; Lua Generator</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QFrame" name="frame">
@@ -178,6 +178,26 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Enter an app ID</string>
     </property>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>162</x>
+     <y>39</y>
+     <width>460</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb(238, 0, 255), stop:1 rgba(255, 255, 255, 255));
+background: none</string>
+   </property>
+   <property name="text">
+    <string>Manifest</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>
